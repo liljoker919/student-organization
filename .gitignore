@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Migrations
+*/migrations/__pycache__/
+*/migrations/*.pyc
+
+# Local settings
+local_settings.py
+
+# Static and media files
+staticfiles/
+media/
