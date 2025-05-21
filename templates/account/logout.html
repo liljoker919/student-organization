@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Student Organization | Logout{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Are you sure you want to log out?</h2>
+    <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        <button class="btn btn-danger mt-3" type="submit">Logout</button>
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-secondary mt-3 ms-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}
