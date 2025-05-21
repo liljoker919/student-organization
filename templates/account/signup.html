@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% comment %} {% load socialaccount %}
-{% providers_media_js %}
+{% load socialaccount %}
 
 {% block title %}Student Organization | Sign Up{% endblock %}
 
@@ -9,22 +8,20 @@
 <form method="post" action="{% url 'account_signup' %}" class="p-4 ">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-success w-100 mt-2" type="submit">Sign Up</button>
+    <button class="btn btn-success w-25 mt-2" type="submit">Sign Up</button>
 </form>
 
 <h5 class="mt-4">Or Sign Up with:</h5>
 <div class="d-flex gap-2">
-    {% for provider in socialaccount_providers %}
-        <a href="{% provider_login_url provider.id %}" class="btn btn-outline-dark">
-            {{ provider.name }}
-        </a>
-    {% endfor %}
+    
+<a href="{% provider_login_url 'google' method='oauth2' %}">Sign up with Google</a><br>
+
 </div>
 
 <p class="mt-3">Already have an account?
     <a href="{% url 'account_login' %}">Login</a>
 </p>
-{% endblock %} {% endcomment %}
+{% endblock %}
 
 
 
