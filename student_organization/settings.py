@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     # Custom Django apps
     "users",
-    "classses",
+    "classes",
     "assignments",
     'core',
     # Allauth
