@@ -30,8 +30,8 @@ class StudentClassUpdateView(UpdateView):
     """Handles updating an existing class."""
     model = StudentClass
     form_class = StudentClassForm
-    success_url = reverse_lazy('class_detail')
     template_name = 'classes/edit_class.html'
+    
 
     def get_success_url(self):
         return reverse_lazy('class_detail', kwargs={'pk': self.object.pk})
