@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg rounded-4 border-0">
+          <div class="card-header d-flex align-items-center justify-content-between bg-primary text-white">
+            <h4 class="mb-0">{{ class_obj.name }}</h4>
+            <!-- <span class="badge" style="background-color: {{ class_instance.color }};">&nbsp;&nbsp;&nbsp;</span> -->
+          </div>
+          <div class="card-body">
+            <!-- <div class="text-center mb-4">
+              <img src="{{ class_instance.icon }}" alt="Class Icon" class="img-fluid" style="max-height: 80px;">
+            </div> -->
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Teacher:</strong> {{ class_obj.teacher }}</li>
+              <li class="list-group-item"><strong>Start Time:</strong> {{ class_obj.start_time }}</li>
+              <li class="list-group-item"><strong>End Time:</strong> {{ class_obj.end_time }}</li>
+            </ul>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <a href="{% url 'class_update' class_obj.pk %}" class="btn btn-success">Update</a>
+            <a href="{% url 'class_delete' class_obj.pk %}" class="btn btn-danger">Delete</a>
+            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-secondary">Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock  %}
+    
