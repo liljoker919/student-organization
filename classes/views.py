@@ -8,35 +8,37 @@ class StudentClassListView(ListView):
     """Displays all class objects."""
     model = StudentClass
     context_object_name = 'classes'
-    # template_name = 'classes/class_list.html'
+    template_name = 'classes/classes_list.html'
 
 
 class StudentClassDetailView(DetailView):
     """Displays details of a single class."""
     model = StudentClass
     context_object_name = 'class_obj'
-    # template_name = 'classes/class_detail.html'
+    template_name = 'classes/class_detail.html'
 
 
 class StudentClassCreateView(CreateView):
     """Handles creating a new class using a form."""
     model = StudentClass
     form_class = StudentClassForm
-    success_url = reverse_lazy('class-list')
-    # template_name = 'classes/class_form.html'
+    success_url = reverse_lazy('all_classes')
+    template_name = 'classes/add_class.html'
 
 
-# Uncomment this when implement it
-# class StudentClassUpdateView(UpdateView):
-#     """Handles updating an existing class."""
-#     model = StudentClass
-#     form_class = StudentClassForm
-#     success_url = reverse_lazy('class-list')
-#     template_name = 'classes/class_form.html'
+class StudentClassUpdateView(UpdateView):
+    """Handles updating an existing class."""
+    model = StudentClass
+    form_class = StudentClassForm
+    success_url = reverse_lazy('class_detail')
+    template_name = 'classes/edit_class.html'
+
+    def get_success_url(self):
+        return reverse_lazy('class_detail', kwargs={'pk': self.object.pk})
 
 
 class StudentClassDeleteView(DeleteView):
     """Handles deleting a class."""
     model = StudentClass
-    success_url = reverse_lazy('class-list')
-    # template_name = 'classes/class_confirm_delete.html'
+    success_url = reverse_lazy('all_classes')
+    template_name = 'classes/confirm_delete.html'

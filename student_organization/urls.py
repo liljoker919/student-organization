@@ -5,4 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('core.urls')),
     path('accounts/', include('allauth.urls')),  # Allauth URLs
+    path('',include('classes.urls'))
 ]
