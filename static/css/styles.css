@@ -1,0 +1,22 @@
+:root {
+    --bg: #F2F4F4;
+    --text: #2C3E50;
+    --accent: #5DADE2;
+    --accent-dark: #1F618D;
+    --feat-bg: #D6EAF8;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+}
+
+a.btn-primary {
+    background-color: var(--accent);
+    border: none;
+}
+
+a.btn-primary:hover {
+    background-color: var(--accent-dark);
+}
