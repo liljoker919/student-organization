@@ -20,3 +20,53 @@ a.btn-primary {
 a.btn-primary:hover {
     background-color: var(--accent-dark);
 }
+.hero_section_image{
+    max-width: 300px;
+}
+
+/* HomePage Feature Style */
+.feature-card {
+    background: linear-gradient(to bottom right, rgb(227, 242, 253), #ffffff);
+    border-radius: 20px;
+    padding: 10px 10px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card i {
+    font-size: 2rem;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+.feature-card h5 {
+    font-size: 1.4rem;
+    color: #0b2c4c;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .feature-card {
+    padding: 20px 15px;
+    }
+
+    .feature-card h5 {
+    font-size: 1.2rem;
+    }
+
+    .feature-card p {
+    font-size: 0.95rem;
+    }
+}
