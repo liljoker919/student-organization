@@ -26,39 +26,39 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django.contrib.sites',
+    "django.contrib.sites",
     # Custom Django apps
     "users",
-    "classses",
+    "classes",
     "assignments",
-    'core',
+    "core",
     # Allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     # Providers (Google & Facebook)
-    'allauth.socialaccount.providers.google',
+    "allauth.socialaccount.providers.google",
 ]
 
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend', # for Django admin
-    'allauth.account.auth_backends.AuthenticationBackend', # Allauth
+    "django.contrib.auth.backends.ModelBackend",  # for Django admin
+    "allauth.account.auth_backends.AuthenticationBackend",  # Allauth
 ]
 
 
 # Allauth configuration
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-ACCOUNT_EMAIL_VERIFICATION = "none" # Will Change to "mandatory" if using email verification
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+ACCOUNT_EMAIL_VERIFICATION = (
+    "none"  # Will Change to "mandatory" if using email verification
+)
 # ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # ACCOUNT_EMAIL_REQUIRED = True
 
 ACCOUNT_LOGIN_METHODS = {"email"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
-
-
 
 
 MIDDLEWARE = [
@@ -69,7 +69,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'allauth.account.middleware.AccountMiddleware', # All auth middleware
+    "allauth.account.middleware.AccountMiddleware",  # All auth middleware
 ]
 
 ROOT_URLCONF = "student_organization.urls"
@@ -77,7 +77,7 @@ ROOT_URLCONF = "student_organization.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -140,14 +140,17 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = "users.CustomUser"
 
 ACCOUNT_FORMS = {
-    'signup': 'users.forms.CustomSignupForm',
+    "signup": "users.forms.CustomSignupForm",
 }
