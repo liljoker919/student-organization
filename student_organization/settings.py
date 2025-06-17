@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    # Celery
+    'django_celery_beat',
     # Custom Django apps
     "users",
     "classes",
@@ -154,3 +156,10 @@ AUTH_USER_MODEL = "users.CustomUser"
 ACCOUNT_FORMS = {
     "signup": "users.forms.CustomSignupForm",
 }
+
+
+# Celery broker and backend urls
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+# TimeZone
+CELERY_TIMEZONE = "UTC"
