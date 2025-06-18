@@ -25,6 +25,9 @@ class StudentClassCreateView(CreateView):
     success_url = reverse_lazy('all_classes')
     template_name = 'classes/add_class.html'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user  # ✅ Set the logged-in user
+        return super().form_valid(form)
 
 class StudentClassUpdateView(UpdateView):
     """Handles updating an existing class."""
