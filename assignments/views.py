@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 
-from .models import Task
+from .models import Task,Notification
 from .forms import TaskForm
 
 
@@ -69,3 +69,23 @@ class TaskDeleteView(DeleteView):
     """
     model = Task
     success_url = reverse_lazy('tasks')
+
+
+
+
+def notification_list(request):
+    """Display all notifications for the current user."""
+    notifications = Notification.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'assignments/notifications.html', {
+        'notifications': notifications
+    })
+
+
+
+
+def delete_notification(request, pk):
+    """Delete a notification by its PK."""
+    notification = get_object_or_404(Notification, pk=pk, user=request.user)
+    if request.method == "POST":
+        notification.delete()
+    return redirect('notifications')
