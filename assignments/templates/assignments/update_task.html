@@ -1,24 +1,23 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <div class="container mt-1 w-50">
   <div class="card shadow">
-    
     <div class="card-body">
       <form method="post">
         {% csrf_token %}
-
 
         <!-- Task Type Radio Buttons -->
         <div class="mb-3">
             <label class="form-label">Task Type</label><br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="task_type" value="assignment" id="assignmentRadio" checked>
+                <input class="form-check-input" type="radio" name="task_type" value="assignment" id="assignmentRadio"
+                       {% if form.instance.task_type == "assignment" or not form.instance.pk %}checked{% endif %}>
                 <label class="form-check-label" for="assignmentRadio">Assignment</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="task_type" value="test" id="testRadio">
+                <input class="form-check-input" type="radio" name="task_type" value="test" id="testRadio"
+                       {% if form.instance.task_type == "test" %}checked{% endif %}>
                 <label class="form-check-label" for="testRadio">Test</label>
             </div>
         </div>
@@ -75,8 +74,6 @@
   </div>
 </div>
 
-
-
 <!-- JS -->
 <script>
     const statusSelect = document.getElementById('statusSelect');
@@ -117,6 +114,5 @@
     const initial = document.querySelector('input[name="task_type"]:checked');
     if (initial) updateStatusOptions(initial.value);
 </script>
-
 
 {% endblock %}
