@@ -41,3 +41,20 @@ class Task(models.Model):
     def __str__(self):
         return self.name
 
+<<<<<<< HEAD
+=======
+
+
+
+# Notification Model
+class Notification(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='notifications')
+    message = models.TextField()
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.message[0:50]
+>>>>>>> e6659f60cc9eccdc808e28b75ff200f9319fb79d

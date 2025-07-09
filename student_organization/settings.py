@@ -27,7 +27,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+<<<<<<< HEAD
     # Celery
+=======
+    # celery
+>>>>>>> e6659f60cc9eccdc808e28b75ff200f9319fb79d
     'django_celery_beat',
     # Custom Django apps
     "users",
@@ -152,6 +156,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 AUTH_USER_MODEL = "users.CustomUser"
+LOGIN_URL = '/accounts/login/'
 
 ACCOUNT_FORMS = {
     "signup": "users.forms.CustomSignupForm",
@@ -162,4 +167,8 @@ ACCOUNT_FORMS = {
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 # TimeZone
+<<<<<<< HEAD
 CELERY_TIMEZONE = "UTC"
+=======
+CELERY_TIMEZONE = "UTC"
+>>>>>>> e6659f60cc9eccdc808e28b75ff200f9319fb79d
