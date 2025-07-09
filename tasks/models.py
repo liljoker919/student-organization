@@ -41,9 +41,6 @@ class Task(models.Model):
     def __str__(self):
         return self.name
 
-<<<<<<< HEAD
-=======
-
 
 
 # Notification Model
@@ -57,4 +54,3 @@ class Notification(models.Model):
 
     def __str__(self):
         return self.message[0:50]
->>>>>>> e6659f60cc9eccdc808e28b75ff200f9319fb79d

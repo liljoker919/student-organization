@@ -18,7 +18,7 @@ app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
     'send_reminder_every_hour': {
-        'task': 'assignments.tasks.send_task_reminders',
+        'task': 'tasks.tasks.send_task_reminders',
         'schedule': crontab(minute='0'),  # executes at the start of every hour
     },
 }
