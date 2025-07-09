@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container mt-1 w-50">
+  <div class="card shadow">
+    
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+
+
+        <!-- Task Type Radio Buttons -->
+        <div class="mb-3">
+            <label class="form-label">Task Type</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="task_type" value="assignment" id="assignmentRadio" checked>
+                <label class="form-check-label" for="assignmentRadio">Assignment</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="task_type" value="test" id="testRadio">
+                <label class="form-check-label" for="testRadio">Test</label>
+            </div>
+        </div>
+
+        <!-- Other fields rendered normally with styling -->
+        <div class="mb-3">
+          {{ form.name.label_tag }}
+          {{ form.name }}
+          {% if form.name.errors %}
+            <div class="text-danger small">{{ form.name.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="mb-3">
+          {{ form.student_class.label_tag }}
+          {{ form.student_class }}
+          {% if form.student_class.errors %}
+            <div class="text-danger small">{{ form.student_class.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="mb-3">
+          {{ form.due_date.label_tag }}
+          {{ form.due_date }}
+          {% if form.due_date.errors %}
+            <div class="text-danger small">{{ form.due_date.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="mb-3">
+          {{ form.priority.label_tag }}
+          {{ form.priority }}
+          {% if form.priority.errors %}
+            <div class="text-danger small">{{ form.priority.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="mb-3">
+          {{ form.status.label_tag }}
+          <select class="form-select" name="status" id="statusSelect">
+           <!-- Will be filled dynamically -->
+          </select>
+          {% if form.status.errors %}
+            <div class="text-danger small">{{ form.status.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success w-25">Create</button>
+            <a href="{% url 'tasks' %}" class="btn btn-light border border-1 border-dark w-25">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- JS -->
+<script>
+    const statusSelect = document.getElementById('statusSelect');
+    const taskTypeRadios = document.querySelectorAll('input[name="task_type"]');
+
+    const statusOptions = {
+        assignment: [
+            { value: 'todo', text: 'To Do' },
+            { value: 'in_progress', text: 'In Progress' },
+            { value: 'complete', text: 'Complete' }
+        ],
+        test: [
+            { value: 'todo', text: 'To Do' },
+            { value: 'complete', text: 'Complete' }
+        ]
+    };
+
+    function updateStatusOptions(selectedType) {
+        statusSelect.innerHTML = '';
+
+        statusOptions[selectedType].forEach(opt => {
+            const option = document.createElement('option');
+            option.value = opt.value;
+            option.textContent = opt.text;
+            statusSelect.appendChild(option);
+        });
+    }
+
+    taskTypeRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (radio.checked) {
+                updateStatusOptions(radio.value);
+            }
+        });
+    });
+
+    // Initial load based on default selection
+    const initial = document.querySelector('input[name="task_type"]:checked');
+    if (initial) updateStatusOptions(initial.value);
+</script>
+
+
+{% endblock %}
