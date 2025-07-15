@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.utils import timezone
+from django.db import connection
 from datetime import timedelta, date
 import random
 
@@ -27,6 +28,16 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
+        # Check if migrations have been applied
+        if not self.check_migrations():
+            self.stdout.write(
+                self.style.ERROR(
+                    'Error: Database migrations have not been applied.\n'
+                    'Please run "python manage.py migrate" first to create the database tables.'
+                )
+            )
+            return
+
         if options['clear']:
             self.stdout.write(self.style.WARNING('Clearing existing data...'))
             Notification.objects.all().delete()
@@ -67,6 +78,19 @@ class Command(BaseCommand):
         
         # Print summary
         self.print_summary(users)
+
+    def check_migrations(self):
+        """Check if required tables exist in the database"""
+        try:
+            with connection.cursor() as cursor:
+                # Check if key tables exist by trying to query them
+                cursor.execute("SELECT COUNT(*) FROM classes_studentclass LIMIT 1")
+                cursor.execute("SELECT COUNT(*) FROM tasks_task LIMIT 1")
+                cursor.execute("SELECT COUNT(*) FROM tasks_notification LIMIT 1")
+                cursor.execute("SELECT COUNT(*) FROM users_customuser LIMIT 1")
+                return True
+        except Exception:
+            return False
 
     def create_users(self, num_users):
         """Create test users with predictable credentials"""

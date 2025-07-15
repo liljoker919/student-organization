@@ -18,8 +18,14 @@ A Django web application to help students with ADHD keep track of assignments, t
 
 ### Test Data Generation
 
-For development and testing purposes, you can generate comprehensive test data using the Django management command:
+For development and testing purposes, you can generate comprehensive test data using the Django management command.
 
+**Prerequisites:** Ensure database migrations have been applied first:
+```bash
+python manage.py migrate
+```
+
+Then generate test data:
 ```bash
 python manage.py populate_test_data
 ```
