@@ -1,5 +1,4 @@
 {% extends "global/base.html" %}
-{% load socialaccount %}
 
 {% block title %}Student Organization | Sign Up{% endblock %}
 
@@ -10,13 +9,6 @@
     {{ form.as_p }}
     <button class="btn btn-success w-25 mt-2" type="submit">Sign Up</button>
 </form>
-
-<h5 class="mt-4">Or Sign Up with:</h5>
-<div class="d-flex gap-2">
-    
-<a href="{% provider_login_url 'google' method='oauth2' %}">Sign up with Google</a><br>
-
-</div>
 
 <p class="mt-3">Already have an account?
     <a href="{% url 'account_login' %}">Login</a>
