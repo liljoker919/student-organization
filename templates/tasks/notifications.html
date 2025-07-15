@@ -17,7 +17,10 @@
                             </div>
                             <form action="{% url 'delete_notification' notification.pk %}" method="POST" class="ms-2">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill">
+                                <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill" 
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-placement="top" 
+                                        title="Delete Notification">
                                     <i class="bi bi-trash3"></i>
                                 </button>
                             </form>
