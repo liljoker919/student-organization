@@ -50,7 +50,7 @@ AUTHENTICATION_BACKENDS = [
 
 
 # Allauth configuration
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/dashboard/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 ACCOUNT_EMAIL_VERIFICATION = (
     "none"  # Will Change to "mandatory" if using email verification
