@@ -61,3 +61,37 @@ Users are created with the following pattern:
 - **Notifications**: 0-3 notifications per task with realistic messages
 
 All data includes proper model relationships and timezone-aware dates.
+
+#### Troubleshooting Test Data Generation
+
+**Database Migration Error:**
+If you encounter an error like `table classes_studentclass has no column named user_id`, ensure migrations are applied first:
+```bash
+python manage.py migrate
+```
+
+**Database Integrity Error:**
+If you get an error about invalid foreign key values (e.g., `user_id contains a value 'user_id'`), your database may be corrupted. To fix this:
+
+1. **Option 1 - Start Fresh (Recommended):**
+   ```bash
+   # Delete the corrupted database
+   rm db.sqlite3
+   
+   # Run migrations to recreate database
+   python manage.py migrate
+   
+   # Generate test data
+   python manage.py populate_test_data
+   ```
+
+2. **Option 2 - Use Recovery Script:**
+   ```bash
+   # Download and run the database recovery script
+   python db_recovery_script.py
+   
+   # Then try migrations again
+   python manage.py migrate
+   ```
+
+**Important Note:** The test data generation command includes built-in checks to prevent database corruption and will warn you if issues are detected.

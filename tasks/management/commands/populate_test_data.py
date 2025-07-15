@@ -37,6 +37,10 @@ class Command(BaseCommand):
                 )
             )
             return
+        
+        # Check for database corruption
+        if not self.check_database_integrity():
+            return
 
         if options['clear']:
             self.stdout.write(self.style.WARNING('Clearing existing data...'))
@@ -91,6 +95,28 @@ class Command(BaseCommand):
                 return True
         except Exception:
             return False
+
+    def check_database_integrity(self):
+        """Check for database corruption issues"""
+        try:
+            with connection.cursor() as cursor:
+                # Check for the specific corruption where user_id contains string instead of integer
+                cursor.execute("SELECT COUNT(*) FROM classes_studentclass WHERE user_id = 'user_id'")
+                corrupted_count = cursor.fetchone()[0]
+                if corrupted_count > 0:
+                    self.stdout.write(
+                        self.style.ERROR(
+                            f'Database corruption detected: {corrupted_count} rows in classes_studentclass '
+                            'have invalid user_id values.\n'
+                            'Please run the database recovery script or delete the corrupted database '
+                            'and run migrations again.'
+                        )
+                    )
+                    return False
+                return True
+        except Exception as e:
+            # If the check fails, it might be due to missing columns, which is fine
+            return True
 
     def create_users(self, num_users):
         """Create test users with predictable credentials"""
@@ -160,16 +186,25 @@ class Command(BaseCommand):
             )
             end_time = start_time + timedelta(hours=1, minutes=30)
             
-            student_class = StudentClass.objects.create(
-                user=user,
-                name=class_name,
-                color=random.choice(colors),
-                icon=random.choice(icons),
-                teacher=random.choice(teachers),
-                start_time=start_time,
-                end_time=end_time
-            )
-            classes.append(student_class)
+            try:
+                student_class = StudentClass.objects.create(
+                    user=user,
+                    name=class_name,
+                    color=random.choice(colors),
+                    icon=random.choice(icons),
+                    teacher=random.choice(teachers),
+                    start_time=start_time,
+                    end_time=end_time
+                )
+                classes.append(student_class)
+            except Exception as e:
+                self.stdout.write(
+                    self.style.ERROR(
+                        f'Error creating class "{class_name}" for user {user.username}: {e}\n'
+                        'This might indicate a database integrity issue.'
+                    )
+                )
+                raise
             
         return classes
 
