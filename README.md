@@ -11,6 +11,7 @@ A Django web application to help students with ADHD keep track of assignments, t
 1. Create and activate a virtual environment
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run migrations: `python manage.py migrate`
+
 4. (Optional) Generate test data: `python manage.py populate_test_data`
 5. Run the server: `python manage.py runserver`
 
@@ -95,3 +96,4 @@ If you get an error about invalid foreign key values (e.g., `user_id contains a 
    ```
 
 **Important Note:** The test data generation command includes built-in checks to prevent database corruption and will warn you if issues are detected.
+
