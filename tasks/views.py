@@ -15,7 +15,7 @@ class TaskListView(LoginRequiredMixin,ListView):
     The tasks are made available in the template context as 'tasks'.
     """
     model = Task
-    template_name = 'assignments/tasks_list.html'
+    template_name = 'tasks/tasks_list.html'
     context_object_name = 'tasks'
 
 
@@ -28,7 +28,7 @@ class TaskCreateView(LoginRequiredMixin,CreateView):
     """
     model = Task
     form_class = TaskForm
-    template_name = 'assignments/create_task.html'
+    template_name = 'tasks/create_task.html'
     success_url = reverse_lazy('tasks')
 
     def get_form_kwargs(self):
@@ -51,7 +51,7 @@ class TaskUpdateView(LoginRequiredMixin,UpdateView):
     """
     model = Task
     form_class = TaskForm
-    template_name = 'assignments/update_task.html'
+    template_name = 'tasks/update_task.html'
     
     def get_success_url(self):
         # Redirect to tasks list after update
@@ -78,7 +78,7 @@ class TaskDeleteView(LoginRequiredMixin,DeleteView):
 def notification_list(request):
     """Display all notifications for the current user."""
     notifications = Notification.objects.filter(user=request.user).order_by('-created_at')
-    return render(request, 'assignments/notifications.html', {
+    return render(request, 'tasks/notifications.html', {
         'notifications': notifications
     })
 

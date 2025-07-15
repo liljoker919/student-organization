@@ -6,5 +6,5 @@ urlpatterns = [
     path('',include('core.urls')),
     path('accounts/', include('allauth.urls')),  # Allauth URLs
     path('',include('classes.urls')),
-    path('',include('assignments.urls'))
+    path('',include('tasks.urls'))
 ]
