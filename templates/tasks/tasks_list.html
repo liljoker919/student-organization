@@ -32,12 +32,12 @@
             </div>
         </div>
 
-        <!-- Changed: Unique modal for each task -->
-        <div class="modal fade" id="deleteModal-{{ task.pk }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <!-- Modal for delete confirmation -->
+        <div class="modal fade" id="deleteModal-{{ task.pk }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ task.pk }}" aria-hidden="true" style="display: none;">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg border-0 rounded-4">
               <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title w-100 text-center">Confirm Deletion</h5>
+                <h5 class="modal-title w-100 text-center" id="deleteModalLabel-{{ task.pk }}">Confirm Deletion</h5>
               </div>
               <div class="modal-body text-center">
                 <p class="fs-5">
@@ -58,4 +58,16 @@
         {% endfor %}
     </div>
 </div>
+
+<script>
+// Ensure modals work correctly with Bootstrap 5
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all modals on the page
+    var modals = document.querySelectorAll('.modal');
+    modals.forEach(function(modal) {
+        new bootstrap.Modal(modal);
+    });
+});
+</script>
+
 {% endblock %}
