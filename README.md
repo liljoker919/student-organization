@@ -19,24 +19,19 @@ This project uses MailHog for email testing during development. MailHog captures
 
 ### MailHog Setup
 
-#### Option 1: Download Executable
 1. Download MailHog from [releases page](https://github.com/mailhog/MailHog/releases)
-2. Extract and run the executable: `./MailHog`
+2. Extract the executable to your project directory or a location in your PATH
+3. Run the executable:
+   - **Windows**: `./MailHog.exe`
+   - **macOS/Linux**: `./MailHog`
 
-#### Option 2: Using Docker
-```bash
-docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
-```
-
-#### Option 3: Using Go (if you have Go installed)
-```bash
-go install github.com/mailhog/MailHog@latest
-MailHog
-```
+MailHog will start and listen on:
+- **SMTP Server**: localhost:1025 (for sending emails)
+- **Web Interface**: localhost:8025 (for viewing emails)
 
 ### Testing Email Configuration
 
-1. Start MailHog (it will run on port 1025 for SMTP and port 8025 for web interface)
+1. Start MailHog by running the executable (`./MailHog.exe` on Windows or `./MailHog` on macOS/Linux)
 2. Send a test email using the management command:
    ```bash
    python manage.py send_test_email

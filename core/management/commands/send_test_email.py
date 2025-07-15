@@ -62,7 +62,7 @@ Time sent: {self.get_current_time()}
             self.stdout.write(
                 self.style.ERROR(
                     f'Failed to send test email: {str(e)}\n'
-                    f'Make sure MailHog is running on localhost:1025'
+                    f'Make sure MailHog is running (./MailHog.exe on Windows or ./MailHog on macOS/Linux)'
                 )
             )
 
