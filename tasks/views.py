@@ -3,9 +3,57 @@ from django.views.generic import ListView,CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from datetime import timedelta
 
 from .models import Task,Notification
 from .forms import TaskForm
+
+
+@login_required
+def dashboard(request):
+    """
+    Display the user dashboard with organized task snapshots:
+    - Upcoming tasks (due within 7 days)
+    - Overdue tasks 
+    - Recently completed tasks
+    """
+    # Get today's date for filtering
+    today = timezone.localdate()
+    upcoming_deadline = today + timedelta(days=7)
+    recent_completion_period = today - timedelta(days=7)
+    
+    # Filter tasks for the current user
+    user_tasks = Task.objects.filter(user=request.user)
+    
+    # Upcoming tasks: due within next 7 days and not complete
+    upcoming_tasks = user_tasks.filter(
+        due_date__lte=upcoming_deadline,
+        due_date__gte=today,
+        status__in=['todo', 'in_progress']
+    ).order_by('due_date', 'priority')
+    
+    # Overdue tasks: past due date and not complete
+    overdue_tasks = user_tasks.filter(
+        due_date__lt=today,
+        status__in=['todo', 'in_progress']
+    ).order_by('due_date')
+    
+    # Recently completed tasks: completed within last 7 days
+    recently_completed = user_tasks.filter(
+        status='complete',
+        updated_at__date__gte=recent_completion_period
+    ).order_by('-updated_at')[:10]  # Limit to 10 most recent
+    
+    context = {
+        'upcoming_tasks': upcoming_tasks,
+        'overdue_tasks': overdue_tasks,
+        'recently_completed': recently_completed,
+        'today': today,
+        'upcoming_deadline': upcoming_deadline,
+    }
+    
+    return render(request, 'tasks/dashboard.html', context)
 
 
 
