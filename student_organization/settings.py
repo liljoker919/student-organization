@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,12 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-37qt+yt9hzj(@ub*86qts(t=m@-z22)di&u84#c89d4sjn)ocs"
+SECRET_KEY = os.environ.get('SECRET_KEY', "django-insecure-37qt+yt9hzj(@ub*86qts(t=m@-z22)di&u84#c89d4sjn)ocs")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ['true', '1', 'yes']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',') if os.environ.get('ALLOWED_HOSTS') else []
 
 
 # Application definition
@@ -171,7 +172,6 @@ CELERY_TIMEZONE = "UTC"
 
 # Email Configuration
 # Use environment variables for production, MailHog for development
-import os
 
 if DEBUG:
     # MailHog configuration for development
