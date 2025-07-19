@@ -98,12 +98,24 @@ WSGI_APPLICATION = "student_organization.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+if not DEBUG:  # Production settings
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('MYSQL_DATABASE_NAME', 'routine101_db'),
+            'USER': os.environ.get('MYSQL_DATABASE_USER', 'dbmasteruser'),
+            'PASSWORD': os.environ.get('MYSQL_DATABASE_PASSWORD'),
+            'HOST': os.environ.get('MYSQL_DATABASE_HOST', 'ls-dea471356e9733d36d898ad29f683b7852ae0f02.c3aomgso0h3s.us-east-2.rds.amazonaws.com'),
+            'PORT': os.environ.get('MYSQL_DATABASE_PORT', '3306'),
+        }
     }
-}
+else:  # Development settings (keep SQLite)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
