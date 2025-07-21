@@ -1,4 +1,11 @@
-/* Kumbh Sans Font Faces - Local Font Files */
+/* 
+   Kumbh Sans fonts are loaded via Google Fonts CDN in base.html template.
+   Local @font-face declarations have been removed to prevent 404 errors
+   until actual font files are available in static/fonts/.
+   
+   When actual font files (woff2, woff, ttf) are added to static/fonts/,
+   uncomment the @font-face declarations below for offline font loading:
+
 @font-face {
     font-family: 'Kumbh Sans';
     src: url('../fonts/KumbhSans-Light.woff2') format('woff2'),
@@ -28,6 +35,7 @@
     font-style: normal;
     font-display: swap;
 }
+*/
 
 /* Kumbh Sans variables for consistent usage */
 :root {
