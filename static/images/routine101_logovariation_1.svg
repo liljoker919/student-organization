@@ -1,0 +1,15 @@
+<svg width="150" height="50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#355EA1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A90E2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background rounded rectangle -->
+  <rect x="5" y="5" width="140" height="40" rx="20" ry="20" fill="url(#logoGrad1)" stroke="#2C4B82" stroke-width="1"/>
+  
+  <!-- Routine101 text in white -->
+  <text x="75" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">ROUTINE</text>
+  <text x="75" y="35" font-family="Arial, sans-serif" font-size="12" font-weight="normal" text-anchor="middle" fill="white">101</text>
+</svg>
