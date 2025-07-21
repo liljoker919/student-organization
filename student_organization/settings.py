@@ -19,7 +19,7 @@ DEBUG = os.environ.get("DEBUG", "True").lower() in ["true", "1", "yes"]
 ALLOWED_HOSTS = (
     os.environ.get("ALLOWED_HOSTS", "").split(",")
     if os.environ.get("ALLOWED_HOSTS")
-    else ["routine101.com", "18.188.144.39", "3.149.217.170", "localhost"]
+    else ["routine101.com", "18.188.144.39", "3.149.217.170", "localhost", "127.0.0.1"]
 )
 
 # Application definition
