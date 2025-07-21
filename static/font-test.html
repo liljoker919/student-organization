@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumbh Sans Font Test</title>
+    
+    <!-- Google Fonts - Kumbh Sans (primary source) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Local font fallback */
+        @font-face {
+            font-family: 'Kumbh Sans';
+            src: url('../fonts/KumbhSans-Light.woff2') format('woff2'),
+                 url('../fonts/KumbhSans-Light.woff') format('woff'),
+                 url('../fonts/KumbhSans-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Kumbh Sans';
+            src: url('../fonts/KumbhSans-Regular.woff2') format('woff2'),
+                 url('../fonts/KumbhSans-Regular.woff') format('woff'),
+                 url('../fonts/KumbhSans-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Kumbh Sans';
+            src: url('../fonts/KumbhSans-Bold.woff2') format('woff2'),
+                 url('../fonts/KumbhSans-Bold.woff') format('woff'),
+                 url('../fonts/KumbhSans-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        body {
+            font-family: 'Kumbh Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .light { font-weight: 300; }
+        .regular { font-weight: 400; }
+        .bold { font-weight: 700; }
+        
+        h1, h2, h3 { font-weight: 700; }
+        p { font-weight: 300; }
+        
+        .test-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kumbh Sans Font Test</h1>
+    
+    <div class="test-section">
+        <h2>Font Weight Tests</h2>
+        <p class="light">This is Kumbh Sans Light (300) - used for body text</p>
+        <p class="regular">This is Kumbh Sans Regular (400) - used for standard text</p>
+        <p class="bold">This is Kumbh Sans Bold (700) - used for headings and emphasis</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Typography Hierarchy</h2>
+        <h1>Heading 1 - Kumbh Sans Bold</h1>
+        <h2>Heading 2 - Kumbh Sans Bold</h2>
+        <h3>Heading 3 - Kumbh Sans Bold</h3>
+        <p>Paragraph text - Kumbh Sans Light. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Font Loading Status</h2>
+        <p>If you see different font weights clearly, Kumbh Sans is loading correctly!</p>
+        <script>
+            // Check if fonts are loaded
+            document.fonts.ready.then(() => {
+                const status = document.getElementById('font-status');
+                if (status) {
+                    status.textContent = 'Fonts loaded successfully!';
+                    status.style.color = 'green';
+                }
+            });
+        </script>
+        <p id="font-status" style="color: orange;">Checking font status...</p>
+    </div>
+</body>
+</html>

@@ -1,3 +1,42 @@
+/* Kumbh Sans Font Faces - Local Font Files */
+@font-face {
+    font-family: 'Kumbh Sans';
+    src: url('../fonts/KumbhSans-Light.woff2') format('woff2'),
+         url('../fonts/KumbhSans-Light.woff') format('woff'),
+         url('../fonts/KumbhSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kumbh Sans';
+    src: url('../fonts/KumbhSans-Regular.woff2') format('woff2'),
+         url('../fonts/KumbhSans-Regular.woff') format('woff'),
+         url('../fonts/KumbhSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kumbh Sans';
+    src: url('../fonts/KumbhSans-Bold.woff2') format('woff2'),
+         url('../fonts/KumbhSans-Bold.woff') format('woff'),
+         url('../fonts/KumbhSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Kumbh Sans variables for consistent usage */
+:root {
+    --font-family-kumbh: 'Kumbh Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+}
+
 :root {
     /* Routine101 Color Palette */
     --routine101-off-white: #FFFFF1;
@@ -22,7 +61,8 @@
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-regular);
     line-height: 1.6;
 }
 
@@ -30,7 +70,8 @@ body {
 .btn-primary {
     background-color: var(--primary);
     border: none;
-    font-weight: 600;
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-bold); /* Kumbh Sans Bold */
     letter-spacing: 0.025em;
     transition: all 0.3s ease;
 }
@@ -43,7 +84,8 @@ body {
 
 .btn-outline-primary {
     border: 2px solid var(--primary);
-    font-weight: 600;
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-bold); /* Kumbh Sans Bold */
     letter-spacing: 0.025em;
     transition: all 0.3s ease;
 }
@@ -88,19 +130,32 @@ body {
     transform: scale(1.1);
 }
 
-/* Typography Enhancements */
+/* Typography Enhancements with Kumbh Sans */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-bold); /* Kumbh Sans Bold */
+}
+
+p, .lead, .text-body {
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-light); /* Kumbh Sans Light */
+}
+
 .display-3 {
-    font-weight: 800;
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-bold); /* Kumbh Sans Bold */
     letter-spacing: -0.025em;
 }
 
 .display-5 {
-    font-weight: 700;
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-bold); /* Kumbh Sans Bold */
     letter-spacing: -0.02em;
 }
 
 .display-6 {
-    font-weight: 700;
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-bold); /* Kumbh Sans Bold */
 }
 
 /* Responsive Improvements */
@@ -312,10 +367,14 @@ body {
 
 .navbar-brand {
     color: var(--routine101-dark) !important;
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-bold); /* Kumbh Sans Bold */
 }
 
 .nav-link {
     color: var(--routine101-dark) !important;
+    font-family: var(--font-family-kumbh);
+    font-weight: var(--font-weight-regular); /* Kumbh Sans Regular */
 }
 
 .nav-link:hover,
