@@ -9,13 +9,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', "django-insecure-37qt+yt9hzj(@ub*86qts(t=m@-z22)di&u84#c89d4sjn)ocs")
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY", "django-insecure-37qt+yt9hzj(@ub*86qts(t=m@-z22)di&u84#c89d4sjn)ocs"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True').lower() in ['true', '1', 'yes']
+DEBUG = os.environ.get("DEBUG", "True").lower() in ["true", "1", "yes"]
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',') if os.environ.get('ALLOWED_HOSTS') else ['routine101', '18.188.144.39', '3.149.217.170']
-
+ALLOWED_HOSTS = (
+    os.environ.get("ALLOWED_HOSTS", "").split(",")
+    if os.environ.get("ALLOWED_HOSTS")
+    else ["routine101.com", "18.188.144.39", "3.149.217.170", "localhost"]
+)
 
 # Application definition
 
@@ -30,7 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     # Celery
     # celery
-    'django_celery_beat',
+    "django_celery_beat",
     # Custom Django apps
     "users",
     "classes",
@@ -100,20 +105,23 @@ WSGI_APPLICATION = "student_organization.wsgi.application"
 
 if not DEBUG:  # Production settings
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('MYSQL_DATABASE_NAME', 'routine101_db'),
-            'USER': os.environ.get('MYSQL_DATABASE_USER', 'dbmasteruser'),
-            'PASSWORD': os.environ.get('MYSQL_DATABASE_PASSWORD'),
-            'HOST': os.environ.get('MYSQL_DATABASE_HOST', 'ls-dea471356e9733d36d898ad29f683b7852ae0f02.c3aomgso0h3s.us-east-2.rds.amazonaws.com'),
-            'PORT': os.environ.get('MYSQL_DATABASE_PORT', '3306'),
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("MYSQL_DATABASE_NAME", "routine101_db"),
+            "USER": os.environ.get("MYSQL_DATABASE_USER", "dbmasteruser"),
+            "PASSWORD": os.environ.get("MYSQL_DATABASE_PASSWORD"),
+            "HOST": os.environ.get(
+                "MYSQL_DATABASE_HOST",
+                "ls-dea471356e9733d36d898ad29f683b7852ae0f02.c3aomgso0h3s.us-east-2.rds.amazonaws.com",
+            ),
+            "PORT": os.environ.get("MYSQL_DATABASE_PORT", "3306"),
         }
     }
 else:  # Development settings (keep SQLite)
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / "db.sqlite3",
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
         }
     }
 
@@ -166,7 +174,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 AUTH_USER_MODEL = "users.CustomUser"
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = "/accounts/login/"
 
 ACCOUNT_FORMS = {
     "signup": "users.forms.CustomSignupForm",
@@ -174,8 +182,8 @@ ACCOUNT_FORMS = {
 
 
 # Celery broker and backend urls
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 # TimeZone
 
 CELERY_TIMEZONE = "UTC"
@@ -187,23 +195,32 @@ CELERY_TIMEZONE = "UTC"
 
 if DEBUG:
     # MailHog configuration for development
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'localhost'
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "localhost"
     EMAIL_PORT = 1025
     EMAIL_USE_TLS = False
     EMAIL_USE_SSL = False
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''
+    EMAIL_HOST_USER = ""
+    EMAIL_HOST_PASSWORD = ""
 else:
     # Production email configuration using environment variables
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
-    EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
-    EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ['true', '1', 'yes']
-    EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', 'False').lower() in ['true', '1', 'yes']
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
+    EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "587"))
+    EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "True").lower() in [
+        "true",
+        "1",
+        "yes",
+    ]
+    EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", "False").lower() in [
+        "true",
+        "1",
+        "yes",
+    ]
+    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 
 # Default from email for all outgoing emails
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@student-organization.local')
-
+DEFAULT_FROM_EMAIL = os.environ.get(
+    "DEFAULT_FROM_EMAIL", "noreply@student-organization.local"
+)
