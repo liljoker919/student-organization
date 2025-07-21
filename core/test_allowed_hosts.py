@@ -24,7 +24,7 @@ class AllowedHostsConfigurationTest(TestCase):
                 reload(app_settings)
                 
                 # Check that the fallback hosts are present
-                expected_hosts = ['routine101', '18.188.144.39']
+                expected_hosts = ['routine101', '18.188.144.39', '3.149.217.170']
                 actual_hosts = app_settings.ALLOWED_HOSTS
                 
                 self.assertEqual(actual_hosts, expected_hosts, 
@@ -73,7 +73,7 @@ class AllowedHostsConfigurationTest(TestCase):
                 reload(app_settings)
                 
                 # With empty env var, should fall back to default hosts
-                expected_hosts = ['routine101', '18.188.144.39']
+                expected_hosts = ['routine101', '18.188.144.39', '3.149.217.170']
                 actual_hosts = app_settings.ALLOWED_HOSTS
                 
                 self.assertEqual(actual_hosts, expected_hosts,
