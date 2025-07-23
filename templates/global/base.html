@@ -27,7 +27,11 @@
     <meta name="twitter:image" content="{% static 'images/og-image.png' %}" />
 
     <title>{% block title %}Routine101 — Organize. Focus. Succeed.{% endblock %}</title>
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{% static 'images/favicon.svg' %}">
 
     <!-- Google Fonts - Kumbh Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
