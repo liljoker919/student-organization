@@ -408,6 +408,9 @@ p, .lead, .text-body {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
     font-size: 0.875rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .helptext ul li {
@@ -429,7 +432,8 @@ p, .lead, .text-body {
 }
 
 /* Form field labels */
-form p label {
+form p label,
+.form-label {
     font-family: var(--font-family-kumbh);
     font-weight: var(--font-weight-regular);
     color: var(--routine101-dark);
@@ -440,6 +444,13 @@ form p label {
 /* Form field spacing */
 form p {
     margin-bottom: 1rem;
+}
+
+/* Centered form controls in authentication forms */
+.text-center .form-control,
+.text-center .form-select {
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 /* Checkbox styling for remember me */
