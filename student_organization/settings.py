@@ -185,6 +185,7 @@ LOGIN_URL = "/accounts/login/"
 
 ACCOUNT_FORMS = {
     "signup": "users.forms.CustomSignupForm",
+    "login": "users.forms.CustomLoginForm",
 }
 
 
