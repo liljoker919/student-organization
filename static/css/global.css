@@ -47,7 +47,7 @@
 
 :root {
     /* Routine101 Color Palette */
-    --routine101-off-white: #FFFFF1;
+    --routine101-off-white: #FFFAF1;
     --routine101-light-blue: #BDD8EC;
     --routine101-light-pink: #F39A9F;
     --routine101-teal: #538A8A;
@@ -377,6 +377,14 @@ p, .lead, .text-body {
     color: var(--routine101-dark) !important;
     font-family: var(--font-family-kumbh);
     font-weight: var(--font-weight-bold); /* Kumbh Sans Bold */
+    display: flex;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.navbar-brand img {
+    margin-right: 0.5rem;
 }
 
 .nav-link {
