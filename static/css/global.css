@@ -469,3 +469,130 @@ form p {
     font-weight: var(--font-weight-light);
     color: var(--routine101-dark);
 }
+
+/* Enhanced Dashboard Summary Cards */
+.dashboard-card-upcoming {
+    background: linear-gradient(135deg, var(--routine101-light-blue), #E8F2FC) !important;
+    border: 2px solid var(--routine101-light-blue) !important;
+    box-shadow: 0 4px 12px rgba(189, 216, 236, 0.3) !important;
+}
+
+.dashboard-card-overdue {
+    background: linear-gradient(135deg, var(--routine101-light-pink), #FCE8E9) !important;
+    border: 2px solid var(--routine101-light-pink) !important;
+    box-shadow: 0 4px 12px rgba(243, 154, 159, 0.3) !important;
+}
+
+.dashboard-card-completed {
+    background: linear-gradient(135deg, var(--routine101-teal), #E8F5F5) !important;
+    border: 2px solid var(--routine101-teal) !important;
+    box-shadow: 0 4px 12px rgba(83, 138, 138, 0.3) !important;
+}
+
+/* Enhanced card hover effects */
+.dashboard-card-upcoming:hover,
+.dashboard-card-overdue:hover,
+.dashboard-card-completed:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+/* Icon and text color adjustments for colored cards */
+.dashboard-card-upcoming .text-warning,
+.dashboard-card-upcoming .fa-clock {
+    color: var(--routine101-medium-blue) !important;
+}
+
+.dashboard-card-overdue .text-danger,
+.dashboard-card-overdue .fa-exclamation-triangle {
+    color: #B85450 !important;
+}
+
+.dashboard-card-completed .text-success,
+.dashboard-card-completed .fa-check-circle {
+    color: var(--routine101-dark) !important;
+}
+
+/* Enhanced Feature Cards for Home Page */
+.feature-card-enhanced {
+    background: linear-gradient(135deg, var(--routine101-light-blue), var(--routine101-off-white)) !important;
+    border: 2px solid rgba(189, 216, 236, 0.4) !important;
+    box-shadow: 0 6px 20px rgba(189, 216, 236, 0.2) !important;
+    transition: all 0.3s ease;
+}
+
+.feature-card-enhanced:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(189, 216, 236, 0.3) !important;
+    border-color: var(--routine101-light-blue) !important;
+}
+
+/* Second feature card - Teal */
+.feature-card-teal {
+    background: linear-gradient(135deg, var(--routine101-teal), var(--routine101-off-white)) !important;
+    border: 2px solid rgba(83, 138, 138, 0.4) !important;
+    box-shadow: 0 6px 20px rgba(83, 138, 138, 0.2) !important;
+}
+
+.feature-card-teal:hover {
+    border-color: var(--routine101-teal) !important;
+    box-shadow: 0 12px 30px rgba(83, 138, 138, 0.3) !important;
+}
+
+/* Third feature card - Light Pink */
+.feature-card-pink {
+    background: linear-gradient(135deg, var(--routine101-light-pink), var(--routine101-off-white)) !important;
+    border: 2px solid rgba(243, 154, 159, 0.4) !important;
+    box-shadow: 0 6px 20px rgba(243, 154, 159, 0.2) !important;
+}
+
+.feature-card-pink:hover {
+    border-color: var(--routine101-light-pink) !important;
+    box-shadow: 0 12px 30px rgba(243, 154, 159, 0.3) !important;
+}
+
+/* Enhanced Button Styles */
+.btn-primary-enhanced {
+    background: linear-gradient(135deg, var(--routine101-medium-blue), #4A6FAF) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(53, 94, 161, 0.3) !important;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-enhanced:hover {
+    background: linear-gradient(135deg, #2A4881, var(--routine101-medium-blue)) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(53, 94, 161, 0.4) !important;
+}
+
+.btn-outline-primary-enhanced {
+    border: 2px solid var(--routine101-medium-blue) !important;
+    color: var(--routine101-medium-blue) !important;
+    background: rgba(53, 94, 161, 0.05) !important;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary-enhanced:hover {
+    background: var(--routine101-medium-blue) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(53, 94, 161, 0.3) !important;
+}
+
+/* Task and Class Cards Enhanced */
+.task-card-enhanced {
+    background: linear-gradient(135deg, #FFFFFF, var(--routine101-off-white)) !important;
+    border: 2px solid rgba(189, 216, 236, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(189, 216, 236, 0.2) !important;
+    transition: all 0.3s ease;
+}
+
+.task-card-enhanced:hover {
+    transform: translateY(-5px);
+    border-color: var(--routine101-light-blue) !important;
+    box-shadow: 0 8px 25px rgba(189, 216, 236, 0.3) !important;
+}
