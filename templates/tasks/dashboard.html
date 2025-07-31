@@ -14,10 +14,10 @@
                     <p class="text-muted mb-0">Stay organized and focused on what matters most</p>
                 </div>
                 <div>
-                    <a href="{% url 'create_task' %}" class="btn btn-primary me-2">
+                    <a href="{% url 'create_task' %}" class="btn btn-primary-enhanced me-2">
                         <i class="fas fa-plus me-1"></i>Create Task
                     </a>
-                    <a href="{% url 'tasks' %}" class="btn btn-outline-primary">
+                    <a href="{% url 'tasks' %}" class="btn btn-outline-primary-enhanced">
                         <i class="fas fa-list me-1"></i>All Tasks
                     </a>
                 </div>
@@ -28,37 +28,37 @@
     <!-- Summary Cards Row -->
     <div class="row mb-4">
         <div class="col-md-4 mb-3">
-            <div class="card border-warning bg-light h-100">
+            <div class="card dashboard-card-upcoming h-100">
                 <div class="card-body text-center">
                     <div class="d-flex align-items-center justify-content-center mb-2">
-                        <i class="fas fa-clock text-warning fa-2x me-2"></i>
-                        <h3 class="card-title mb-0 text-warning">{{ upcoming_tasks|length }}</h3>
+                        <i class="fas fa-clock fa-2x me-2"></i>
+                        <h3 class="card-title mb-0">{{ upcoming_tasks|length }}</h3>
                     </div>
-                    <p class="card-text text-muted">Upcoming Tasks</p>
+                    <p class="card-text">Upcoming Tasks</p>
                     <small class="text-muted">Due in next 7 days</small>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-3">
-            <div class="card border-danger bg-light h-100">
+            <div class="card dashboard-card-overdue h-100">
                 <div class="card-body text-center">
                     <div class="d-flex align-items-center justify-content-center mb-2">
-                        <i class="fas fa-exclamation-triangle text-danger fa-2x me-2"></i>
-                        <h3 class="card-title mb-0 text-danger">{{ overdue_tasks|length }}</h3>
+                        <i class="fas fa-exclamation-triangle fa-2x me-2"></i>
+                        <h3 class="card-title mb-0">{{ overdue_tasks|length }}</h3>
                     </div>
-                    <p class="card-text text-muted">Overdue Tasks</p>
+                    <p class="card-text">Overdue Tasks</p>
                     <small class="text-muted">Need immediate attention</small>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-3">
-            <div class="card border-success bg-light h-100">
+            <div class="card dashboard-card-completed h-100">
                 <div class="card-body text-center">
                     <div class="d-flex align-items-center justify-content-center mb-2">
-                        <i class="fas fa-check-circle text-success fa-2x me-2"></i>
-                        <h3 class="card-title mb-0 text-success">{{ recently_completed|length }}</h3>
+                        <i class="fas fa-check-circle fa-2x me-2"></i>
+                        <h3 class="card-title mb-0">{{ recently_completed|length }}</h3>
                     </div>
-                    <p class="card-text text-muted">Recently Completed</p>
+                    <p class="card-text">Recently Completed</p>
                     <small class="text-muted">Last 7 days</small>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                     <i class="fas fa-tasks fa-4x text-muted mb-3"></i>
                     <h4 class="text-muted mb-3">No Tasks to Display</h4>
                     <p class="text-muted mb-4">Get started by creating your first task or assignment!</p>
-                    <a href="{% url 'create_task' %}" class="btn btn-primary btn-lg">
+                    <a href="{% url 'create_task' %}" class="btn btn-primary-enhanced btn-lg">
                         <i class="fas fa-plus me-2"></i>Create Your First Task
                     </a>
                 </div>

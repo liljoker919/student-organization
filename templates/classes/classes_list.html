@@ -3,14 +3,14 @@
 
 {% block content %}
 
-<a class="btn btn-light border border-primary mt-2 mx-2" href="{% url 'add_class' %}">Create Class</a>
+<a class="btn btn-primary-enhanced border mt-2 mx-2" href="{% url 'add_class' %}">Create Class</a>
 <div class="container mt-2">
   <div class="row">
     
     <!-- Class Card -->
     {% for class in classes %}
     <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm border-secondary" style="border-top: 5px solid;"> 
+      <div class="card task-card-enhanced shadow-sm border-secondary" style="border-top: 5px solid;"> 
         <div class="card-body">
           <div class="d-flex align-items-center mb-3">
             

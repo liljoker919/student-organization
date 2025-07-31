@@ -2,14 +2,14 @@
 
 
 {% block content %}
-<a href="{% url 'create_task' %}" class="btn btn-light border border-1 border-primary mt-1 mx-1">Create Task</a>
+<a href="{% url 'create_task' %}" class="btn btn-outline-primary-enhanced border border-1 mt-1 mx-1">Create Task</a>
 <div class="container">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
         {% for task in tasks %}
         <!-- Task Card -->
         <div class="col">
-            <div class="card task-card shadow-sm">
+            <div class="card task-card task-card-enhanced shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title text-primary">{{task.name}}</h5>
                     <p class="mb-1"><strong>Type:</strong> {{task.task_type}}</p>
@@ -19,7 +19,7 @@
                     <p><strong>Status:</strong> {{task.status}}</p>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <a href="{% url 'task_update' task.pk %}" class="btn btn-outline-primary btn-sm btn-icon">
+                    <a href="{% url 'task_update' task.pk %}" class="btn btn-outline-primary-enhanced btn-sm btn-icon">
                        Update
                     </a>
                     <!-- Changed: Button now targets task-specific modal -->
